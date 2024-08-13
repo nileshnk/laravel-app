@@ -40,5 +40,13 @@ USER www-data
 
 # Expose port 8080 and start php-fpm server
 EXPOSE 8080
-# CMD ["php-fpm"]
-CMD php artisan serve --host=0.0.0.0 --port=8080
+
+RUN composer install
+
+# RUN php artisan key:generate
+
+# RUN php artisan session:table
+
+# RUN php artisan migrate
+
+CMD php artisan key:generate && php artisan migrate && php artisan serve --host=0.0.0.0 --port=8080

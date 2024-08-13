@@ -1,7 +1,7 @@
 services:
   app:
     build:
-      context: ./src/
+      context: ./src
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
@@ -37,7 +37,7 @@ services:
       retries: 3
       timeout: 5s
 networks:
-  sail:
+  mynetwork:
     driver: bridge
 volumes:
   sail-mysql:
