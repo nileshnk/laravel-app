@@ -1,0 +1,21 @@
+name: Staging Deployment
+
+on:
+  push:
+    branches:
+      - staging
+      - development
+
+jobs:
+  deploy:
+    timeout-minutes: 20
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Deployment
+        run: bash ./.github/scripts/pipeline.staging.sh
+
+      - name: Exit
+        run: exit 0
